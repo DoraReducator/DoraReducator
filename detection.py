@@ -7,7 +7,7 @@ mp_holistic = mp.solutions.holistic             # mediapipe 全身偵測方法
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
-
+# 1
 # mediapipe 啟用偵測全身
 with mp_holistic.Holistic(
     min_detection_confidence=0.5,
