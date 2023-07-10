@@ -6,6 +6,7 @@ mp_drawing_styles = mp.solutions.drawing_styles # mediapipe 繪圖樣式
 mp_holistic = mp.solutions.holistic             # mediapipe 全身偵測方法
 
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
 
 # mediapipe 啟用偵測全身
 with mp_holistic.Holistic(

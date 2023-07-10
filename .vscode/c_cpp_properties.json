@@ -1,0 +1,47 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/drychang/1_28/devel/include/**",
+        "/home/drychang/winter_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/amcl/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/base_local_planner/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/carrot_planner/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/clear_costmap_recovery/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/costmap_2d/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/dwa_local_planner/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/global_planner/include/**",
+        "/home/drychang/winter_ws/src/navigation/custom_layers/lidar_obstacle_layer/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/map_server/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/move_base/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/move_slow_and_clear/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/nav_core/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/navfn/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation_main/include/**",
+        "/home/drychang/winter_ws/src/shared_pkgs/obstacle_detector/include/**",
+        "/home/drychang/winter_ws/src/navigation/obstacle_simulation/include/**",
+        "/home/drychang/winter_ws/src/navigation/custom_layers/path_layer/include/**",
+        "/home/drychang/winter_ws/src/navigation/path_tracker/include/**",
+        "/home/drychang/1_28/src/pc/include/**",
+        "/home/drychang/1_28/src/practice/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/rotate_recovery/include/**",
+        "/home/drychang/winter_ws/src/navigation/custom_layers/simple_layers/include/**",
+        "/home/drychang/1_28/src/tt/include/**",
+        "/home/drychang/winter_ws/src/navigation/navigation-stack/voxel_grid/include/**",
+        "/home/drychang/winter_ws/src/winter_2022/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
