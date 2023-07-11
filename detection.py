@@ -3,7 +3,7 @@ import mediapipe as mp
 import matplotlib.pyplot as plt
 import numpy as np
 
-%config InlineBackend.figure_format = 'retina'
+# %config InlineBackend.figure_format = 'retina'
 
 mp_drawing = mp.solutions.drawing_utils         # mediapipe 繪圖方法q
 mp_drawing_styles = mp.solutions.drawing_styles # mediapipe 繪圖樣式
