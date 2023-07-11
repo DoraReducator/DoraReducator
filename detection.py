@@ -26,7 +26,7 @@ with mp_holistic.Holistic(
             print("Cannot receive frame")
             break
         img = cv2.resize(img,(1856,1392))
-        img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)   # 將 BGR 轉換成 RGB
+        img2 = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)   # 將 BGR 轉換成 RGB  hgfjhfgh
         results = holistic.process(img2)              # 開始偵測全身
         # 面部偵測，繪製臉部網格
         mp_drawing.draw_landmarks(
