@@ -32,7 +32,8 @@
                     <source src="mp3/ambulance.mp3" type="audio/mpeg">
                     Your browser does not support HTML5 audio.
                     </audio>
-                    <div id="result"></div>
+                    <div class="result-text"></div>
+                    <div id="result"><div>
                 </div>
             </main>           
                 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -42,6 +43,7 @@
 
                 const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
                 let model, webcam, ctx, labelContainer, maxPredictions;
+                
                 // Audio 設定
                 var aud = document.getElementById("wakeUpAudio");
                 function playAud() { 
@@ -50,6 +52,7 @@
                 function pauseAud() { 
                 aud.pause(); 
                 }
+
                 async function init() {
                     const modelURL = URL + "model.json";
                     const metadataURL = URL + "metadata.json";
@@ -96,9 +99,11 @@
                         //針對這個條件式判斷警鈴是否觸發（聲音）
                     if (prediction[0].probability.toFixed(2) >= 0.5) {
                         pauseAud();
+                        document.getElementById("result").innerHTML = "姿勢正確";
                     }
                     else{
                         playAud()
+                        document.getElementById("result").innerHTML = "姿勢錯誤";
                     } 
                         // finally draw the poses
                         drawPose(pose);
@@ -121,25 +126,19 @@
         </main>
         <script src="js/logo.js"></script>
         <footer>
-            <div class="footer-content">
-              <div class="footer-section">
-                <h5 class="white-text">Developer</h5>
-                <h4 class="white-text">
-                  <a href="mailto:chunghao777@gmail.com">鍾弘浩</a>
-                  <a href="mailto:jimmy.chang2003@gmail.com">張景翔</a>
-                </h4>
-              </div>
-              <div class="footer-section">
-                <h5 class="white-text">Contact</h5>
-                <div class="centered-logos"></div>
-                <a href="https://example.com"><img src="logo1.png" alt="Logo 1"></a>
-                <a href="https://example.com"><img src="logo2.png" alt="Logo 2"></a>
-                <a href="https://example.com"><img src="logo3.png" alt="Logo 3"></a>
-                <a href="https://example.com"><img src="logo4.png" alt="Logo 4"></a>
-                <a href="https://example.com"><img src="logo5.png" alt="Logo 5"></a>
-              </div>
+            <div class="footer">
+                <div class="container">
+                    <p class="footer-text">Dev .鍾弘浩 .張景翔</p>
+                    <ul class="footer-menu">
+                        <li> <a href="https://github.com/chris911024/Applications-of-Machine-Learning">
+                            <img src="images/github.png" alt="GitHub Logo">
+                          </a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
             </div>
-          </footer>
-          
+        </footer>
     </body>
 </html>
