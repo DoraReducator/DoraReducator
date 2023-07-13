@@ -1,0 +1,166 @@
+body {
+    background-color: #717452;
+    background-size: cover; 
+    background-position: center; 
+}
+
+header {
+    background-color: #4c5355;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 150px;
+}
+
+li {
+    border: 2px solid #f5eeee;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%; 
+    margin-right: 20px; 
+    transition: transform 0.3s;
+    background-image: url("images/nature.png"); 
+    background-size: cover; 
+    background-position: center; 
+
+    font-family: "Arial", sans-serif; 
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    color: #fff;
+}
+
+nav ul li:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(179, 255, 0, 0.2);
+    z-index: -10;
+}
+li:hover {
+    transform: scale(1.2); /* 添加放大效果 */
+}
+nav ul li a {
+    margin-right: 20px;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px; 
+    position: relative; 
+    z-index: 1; 
+}
+
+nav ul li:hover a {
+    color: #ff0000; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo img {
+    margin-right: 50px;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.logo-text {
+    font-size: 40px;
+    font-weight: bold;
+    color: #1c1a1a;
+    text-shadow: 0 0 8px #fff, 0 0 10px #fff, 0 0 12px #fff, 0 0 15px #ff00ff;
+    animation: heartbeat 1.5s infinite;
+}
+
+main {
+    margin-top: 100px; 
+}
+
+.pose-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 35px;
+    margin: 0;
+    max-width: 125px;
+   
+}
+
+.pose-section #label-container {
+    font-size: 18px; 
+    margin-left: 300px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: none;
+}
+
+@keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .pose-section button {
+    font-size: 50px;
+    padding: 12px 24px;
+    margin-top: 20px;
+    animation: bounce 1s infinite;
+    text-shadow: 0 0 10px #fff, 0 0 20px #b72020, 0 0 30px #481da0, 0 0 40px #32b3e2, 0 0 40px #e16f0a;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%); 
+    border-radius: 30px;
+}
+/*
+.pose-section canvas {
+    width: 200%;
+    height: auto;
+    margin-right: 130px;
+    border-radius: 70px;
+  }
+*/
+.pose-section canvas {
+    width: 200%;
+    height: auto;
+    margin-left: 500px;
+    margin-right: -500px;
+    border-radius: 70px;
+    display: block;
+  }
+  
+  

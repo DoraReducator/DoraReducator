@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <title>影像辨識坐姿健康管理系統</title>
+</head>
+    <body>
+        <header>
+            <div class="logo">
+                <img src=".jpg" alt="Logo">
+                <div class="logo-text">坐姿健康管理系統</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="https://heho.com.tw">Heho</a></li>
+                    <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
+                    <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
+                </ul>
+            </nav>
+        </header>
+            <main>
+                <div class="pose-section">
+                    <div class="pose-description"></div>
+                    <button type="button" onclick="init()">Start</button>
+                    <div><canvas id="canvas"></canvas></div>
+                    <div id="label-container"></div>
+                    <br><br><br><br>
+                    <audio id="wakeUpAudio">
+                    <source src="mp3/ambulance.mp3" type="audio/mpeg">
+                    Your browser does not support HTML5 audio.
+                    </audio>
+                    <div id="result"></div>
+                </div>
+            </main>           
+                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+                <script type="text/javascript">
+
+                const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
+                let model, webcam, ctx, labelContainer, maxPredictions;
+                // Audio 設定
+                var aud = document.getElementById("wakeUpAudio");
+                function playAud() { 
+                aud.play(); 
+                }
+                function pauseAud() { 
+                aud.pause(); 
+                }
+                async function init() {
+                    const modelURL = URL + "model.json";
+                    const metadataURL = URL + "metadata.json";
+
+                    model = await tmPose.load(modelURL, metadataURL);
+                    maxPredictions = model.getTotalClasses();
+
+                    // Convenience function to setup a webcam
+                    const size = 200;
+                    const flip = true; 
+                    webcam = new tmPose.Webcam(size, size, flip); 
+                    await webcam.setup();
+                    await webcam.play();
+                    window.requestAnimationFrame(loop);
+
+                   
+                    const canvas = document.getElementById("canvas");
+                    canvas.width = size; canvas.height = size;
+                    ctx = canvas.getContext("2d");
+                    labelContainer = document.getElementById("label-container");
+                    for (let i = 0; i < maxPredictions; i++) { // and class labels
+                        labelContainer.appendChild(document.createElement("div"));
+                    }
+                }
+
+                async function loop(timestamp) {
+                    webcam.update(); // update the webcam frame
+                    await predict();
+                    window.requestAnimationFrame(loop);
+                }
+
+                async function predict() {
+                    // Prediction #1: run input through posenet
+                    // estimatePose can take in an image, video or canvas html element
+                    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+                    // Prediction 2: run input through teachable machine classification model
+                    const prediction = await model.predict(posenetOutput);
+
+                    for (let i = 0; i < maxPredictions; i++) {
+                        const classPrediction =
+                            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                        labelContainer.childNodes[i].innerHTML = classPrediction;
+                    
+                        //針對這個條件式判斷警鈴是否觸發（聲音）
+                    if (prediction[0].probability.toFixed(2) >= 0.5) {
+                        pauseAud();
+                    }
+                    else{
+                        playAud()
+                    } 
+                        // finally draw the poses
+                        drawPose(pose);
+                    }
+                    document.querySelector('.pose-description').style.display = 'none';
+                    document.querySelector('button').style.display = 'none';
+                }
+                function drawPose(pose) {
+                    if (webcam.canvas) {
+                        ctx.drawImage(webcam.canvas, 0, 0);
+                        // draw the keypoints and skeleton
+                        if (pose) {
+                            const minPartConfidence = 0.5;
+                            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+                            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+                        }
+                    }
+                }
+            </script>
+        </main>
+        <script src="js/logo.js"></script>
+        <footer>
+            <div class="footer-content">
+              <div class="footer-section">
+                <h5 class="white-text">Developer</h5>
+                <h4 class="white-text">
+                  <a href="mailto:chunghao777@gmail.com">鍾弘浩</a>
+                  <a href="mailto:jimmy.chang2003@gmail.com">張景翔</a>
+                </h4>
+              </div>
+              <div class="footer-section">
+                <h5 class="white-text">Contact</h5>
+                <div class="centered-logos"></div>
+                <a href="https://example.com"><img src="logo1.png" alt="Logo 1"></a>
+                <a href="https://example.com"><img src="logo2.png" alt="Logo 2"></a>
+                <a href="https://example.com"><img src="logo3.png" alt="Logo 3"></a>
+                <a href="https://example.com"><img src="logo4.png" alt="Logo 4"></a>
+                <a href="https://example.com"><img src="logo5.png" alt="Logo 5"></a>
+              </div>
+            </div>
+          </footer>
+          
+    </body>
+</html>
