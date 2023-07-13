@@ -11,7 +11,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20px;
+    border-radius: 150px;
     padding: 20px;
     position: fixed;
     bottom: 0;
@@ -58,7 +58,7 @@ body {
     display: inline-block;
     width: 30px;
     height: 30px;
-    margin-right: 10px; /* 調整 logo 之間的間距 */
+    margin-right: 0px; /* 調整 logo 之間的間距 */
   }
   
   .footer-section a:last-child {
