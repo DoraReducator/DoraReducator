@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+  }
+  
+  footer {
+    background-color: #4c5355;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-section {
+    flex-basis: 50%;
+  }
+  
+  .white-text {
+    color: white;
+  }
+  
+  h5.white-text {
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  h4.white-text {
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: center; /* 將 h4 內容水平居中 */
+  }
+  
+  .developer-names {
+    display: flex;
+    justify-content: space-between; /* 將兩個 a 元素水平排列 */
+  }
+  
+  h4.white-text a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footer-section a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* 調整 logo 之間的間距 */
+  }
+  
+  .footer-section a:last-child {
+    margin-right: 0; /* 最後一個 logo 不需要右邊間距 */
+  }
+  
+  .centered-logos {
+    display: flex;
+    justify-content: center;
+  }
+  
+  

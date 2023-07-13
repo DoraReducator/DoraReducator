@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/footer.css">
     <title>影像辨識坐姿健康管理系統</title>
 </head>
     <body>
@@ -14,10 +15,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="https://heho.com.tw">Heho</a></li>
+                    <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
+                    <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
                 </ul>
             </nav>
         </header>
@@ -29,7 +29,7 @@
                     <div id="label-container"></div>
                     <br><br><br><br>
                     <audio id="wakeUpAudio">
-                    <source src="wakeupalarm.mp3" type="audio/mpeg">
+                    <source src="mp3/ambulance.mp3" type="audio/mpeg">
                     Your browser does not support HTML5 audio.
                     </audio>
                     <div id="result"></div>
@@ -39,22 +39,17 @@
                 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
 
                 <script type="text/javascript">
-        // More API functions here:
-        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
-        // the link to your model provided by Teachable Machine export panel
                 const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
                 let model, webcam, ctx, labelContainer, maxPredictions;
-                
-                // functions to play and pause audio file
-                    var aud = document.getElementById("wakeUpAudio");
-                    function playAud() { 
-                    aud.play(); 
-                    }
-                    function pauseAud() { 
-                    aud.pause(); 
-                    }
-
+                // Audio 設定
+                var aud = document.getElementById("wakeUpAudio");
+                function playAud() { 
+                aud.play(); 
+                }
+                function pauseAud() { 
+                aud.pause(); 
+                }
                 async function init() {
                     const modelURL = URL + "model.json";
                     const metadataURL = URL + "metadata.json";
@@ -64,13 +59,13 @@
 
                     // Convenience function to setup a webcam
                     const size = 200;
-                    const flip = true; // whether to flip the webcam
-                    webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-                    await webcam.setup(); // request access to the webcam
+                    const flip = true; 
+                    webcam = new tmPose.Webcam(size, size, flip); 
+                    await webcam.setup();
                     await webcam.play();
                     window.requestAnimationFrame(loop);
 
-                    // append/get elements to the DOM
+                   
                     const canvas = document.getElementById("canvas");
                     canvas.width = size; canvas.height = size;
                     ctx = canvas.getContext("2d");
@@ -97,35 +92,19 @@
                         const classPrediction =
                             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                         labelContainer.childNodes[i].innerHTML = classPrediction;
-                        
-                        const resultElement = document.getElementById("result");
-
-                        let resultText = "";
-                        if (prediction[0].probability.toFixed(2) >= 0.75) {
-                            resultText = "1";
-                            pauseAud();
-                        } else if (prediction[1].probability.toFixed(2) >= 0.75) {
-                            resultText = "2";
-                            playAud();
-                        } else if (prediction[2].probability.toFixed(2) >= 0.75) {
-                            resultText = "3";
-                            playAud();
-                        } else if (prediction[3].probability.toFixed(2) >= 0.75) {
-                            resultText = "4";
-                            playAud();
-                        } else if (prediction[4].probability.toFixed(2) >= 0.75) {
-                            resultText = "5";
-                            playAud();
-                        } else {
-                            resultText = "No condition ";
-                        }
+                    
+                        //針對這個條件式判斷警鈴是否觸發（聲音）
+                    if (prediction[0].probability.toFixed(2) >= 0.5) {
+                        pauseAud();
+                    }
+                    else{
+                        playAud()
+                    } 
+                        // finally draw the poses
+                        drawPose(pose);
                     }
                     document.querySelector('.pose-description').style.display = 'none';
                     document.querySelector('button').style.display = 'none';
-
-
-                    // finally draw the poses
-                    drawPose(pose);
                 }
                 function drawPose(pose) {
                     if (webcam.canvas) {
@@ -141,8 +120,26 @@
             </script>
         </main>
         <script src="js/logo.js"></script>
-    </body>
         <footer>
-            
-        </footer>
+            <div class="footer-content">
+              <div class="footer-section">
+                <h5 class="white-text">Developer</h5>
+                <h4 class="white-text">
+                  <a href="mailto:chunghao777@gmail.com">鍾弘浩</a>
+                  <a href="mailto:jimmy.chang2003@gmail.com">張景翔</a>
+                </h4>
+              </div>
+              <div class="footer-section">
+                <h5 class="white-text">Contact</h5>
+                <div class="centered-logos"></div>
+                <a href="https://example.com"><img src="logo1.png" alt="Logo 1"></a>
+                <a href="https://example.com"><img src="logo2.png" alt="Logo 2"></a>
+                <a href="https://example.com"><img src="logo3.png" alt="Logo 3"></a>
+                <a href="https://example.com"><img src="logo4.png" alt="Logo 4"></a>
+                <a href="https://example.com"><img src="logo5.png" alt="Logo 5"></a>
+              </div>
+            </div>
+          </footer>
+          
+    </body>
 </html>
