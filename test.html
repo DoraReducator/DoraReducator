@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>影像辨識坐姿健康管理系統</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src=".jpg" alt="Logo">
+            <div class="logo-text">坐姿健康管理系統</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://heho.com.tw">Heho</a></li>
+                <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
+                <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="pose-section">
+            <div class="pose-description"></div>
+            <button type="button" onclick="init()">Start</button>
+            <div><canvas id="canvas"></canvas></div>
+            <div id="label-container"></div>
+            <br><br><br><br>
+            <audio id="wakeUpAudio">
+                <source src="mp3/ambulance.mp3" type="audio/mpeg">
+                Your browser does not support HTML5 audio.
+            </audio>
+            <div id="result"></div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script type="text/javascript">
+        // More API functions here:
+        // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+
+        // the link to your model provided by Teachable Machine export panel
+        const URL = "https://teachablemachine.withgoogle.com/models/L71vjtyQV/";
+        let model, webcam, ctx, labelContainer, maxPredictions;
+
+        // functions to play and pause audio file
+        var aud = document.getElementById("wakeUpAudio");
+
+        function playAud() {
+            aud.play();
+        }
+
+        function pauseAud() {
+            aud.pause();
+        }
+
+        async function init() {
+            // 檢查瀏覽器相容性
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                // 瀏覽器支援 getUserMedia()
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                    // 視訊設備權限已獲得，執行後續操作
+
+                    const modelURL = URL + "model.json";
+                    const metadataURL = URL + "metadata.json";
+
+                    // load the model and metadata
+                    model = await tmPose.load(modelURL, metadataURL);
+                    maxPredictions = model.getTotalClasses();
+
+                    // Convenience function to setup a webcam
+                    const size = 200;
+                    const flip = true; // whether to flip the webcam
+                    webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+                    await webcam.setup(); // request access to the webcam
+                    await webcam.play();
+                    window.requestAnimationFrame(loop);
+
+                    // append/get elements to the DOM
+                    const canvas = document.getElementById("canvas");
+                    canvas.width = size; canvas.height = size;
+                    ctx = canvas.getContext("2d");
+                    labelContainer = document.getElementById("label-container");
+                    for (let i = 0; i < maxPredictions; i++) { // and class labels
+                        labelContainer.appendChild(document.createElement("div"));
+                    }
+                } catch (error) {
+                    // 使用者拒絕權限或發生錯誤
+                    console.log("無法取得媒體權限:", error);
+                    // 處理錯誤情況，例如顯示錯誤訊息或提供替代方案
+                }
+            } else {
+                // 瀏覽器不支援 getUserMedia()
+                // 提供相應的錯誤訊息或回退方案
+                console.log("瀏覽器不支援 getUserMedia()");
+            }
+        }
+
+        async function loop(timestamp) {
+            webcam.update(); // update the webcam frame
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            // Prediction #1: run input through posenet
+            // estimatePose can take in an image, video or canvas html element
+            const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+            // Prediction 2: run input through teachable machine classification model
+            const prediction = await model.predict(posenetOutput);
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                // don't play audio when head's neutral with probability >= 75%
+                if (prediction[0].probability.toFixed(2) >= 0.75)
+                    pauseAud();
+                else
+                    playAud();
+            }
+
+            // finally draw the poses
+            drawPose(pose);
+        }
+
+        function drawPose(pose) {
+            if (webcam.canvas) {
+                ctx.drawImage(webcam.canvas, 0, 0);
+                // draw the keypoints and skeleton
+                if (pose) {
+                    const minPartConfidence = 0.5;
+                    tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+                    tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+                }
+            }
+        }
+    </script>
+</body>
+<footer>
+</footer>
+</html>

@@ -1,10 +1,35 @@
+body {
+    background-color: #717452;
+    background-size: cover; 
+    background-position: center; 
+}
+
 header {
-    background-color: #333;
+    background-color: #4c5355;
     padding: 20px;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: 30px;
+}
+
+li {
+    border: 2px solid #f5eeee;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%; 
+    margin-right: 20px; 
+    transition: transform 0.3s;
+    background-image: url("images/nature.png"); 
+    background-size: cover; 
+    background-position: center; 
+
+    font-family: "Arial", sans-serif; 
+    font-size: 20px; 
+    font-weight: bold;
 }
 
 nav ul {
@@ -20,9 +45,12 @@ nav ul li:hover::before {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #fff;
+    background-color: rgba(179, 255, 0, 0.2);
+    z-index: -10;
 }
-
+li:hover {
+    transform: scale(1.2); /* 添加放大效果 */
+}
 nav ul li a {
     margin-right: 20px;
     color: #fff;
@@ -30,6 +58,8 @@ nav ul li a {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 100px; 
+    position: relative; 
+    z-index: 1; 
 }
 
 nav ul li:hover a {
@@ -77,9 +107,10 @@ main {
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+    padding: 35px;
     margin: 0;
     max-width: 125px;
+   
 }
 
 .pose-section #label-container {
@@ -88,6 +119,7 @@ main {
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
+    display: none;
 }
 
 @keyframes bounce {
@@ -112,11 +144,23 @@ main {
     top: 50%;
     left: 45%;
     transform: translate(-50%, -50%); 
+    border-radius: 30px;
 }
-
+/*
 .pose-section canvas {
     width: 200%;
     height: auto;
-    margin-right: 50px;
+    margin-right: 130px;
+    border-radius: 70px;
   }
+*/
+.pose-section canvas {
+    width: 200%;
+    height: auto;
+    margin-left: 500px;
+    margin-right: -500px;
+    border-radius: 70px;
+    display: block;
+  }
+  
   
