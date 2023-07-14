@@ -1,147 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/styles.css">  
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/footer.css">
     <title>影像辨識坐姿健康管理系統</title>
 </head>
-    <body>
-        <div class="back">
-            <img src="images/nature.png" alt="back-images">
-        </div>        
-        <header>
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
-                <div class="logo-text">坐姿健康管理系統</div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="https://heho.com.tw">Heho</a></li>
-                    <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
-                    <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
+
+<body>
+    <div class="back">
+        <img src="images/nature.png" alt="back-images">
+    </div>
+    <header>
+        <div class="logo">
+            <img src="images/Dora_Reducator_logo.png" alt="Logo">
+            <div class="logo-text">坐姿健康管理系統</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://heho.com.tw">Heho</a></li>
+                <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
+                <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="pose-section">
+            <div class="pose-description"></div>
+            <button type="button" onclick="init()">START</button>
+            <div><canvas id="canvas"></canvas></div>
+            <div id="label-container"></div>
+            <br><br><br><br>
+            <audio id="wakeUpAudio">
+                <source src="mp3/ambulance.mp3" type="audio/mpeg">
+                Your browser does not support HTML5 audio.
+            </audio>
+            <div class="result-text"></div>
+            <div id="result">
+                <div>
+                </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+
+    <script type="text/javascript">
+
+        const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
+        let model, webcam, ctx, labelContainer, maxPredictions;
+
+        // Audio 設定ff
+        var aud = document.getElementById("wakeUpAudio");
+        function playAud() {
+            aud.play();
+        }
+        function pauseAud() {
+            aud.pause();
+        }
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            model = await tmPose.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+
+            // Convenience function to setup a webcam
+            const size = 200;
+            const flip = true;
+            webcam = new tmPose.Webcam(size, size, flip);
+            await webcam.setup();
+            await webcam.play();
+            window.requestAnimationFrame(loop);
+
+
+            const canvas = document.getElementById("canvas");
+            canvas.width = size; canvas.height = size;
+            ctx = canvas.getContext("2d");
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) { // and class labels
+                labelContainer.appendChild(document.createElement("div"));
+            }
+        }
+
+        async function loop(timestamp) {
+            webcam.update(); // update the webcam frame
+            await predict();
+            window.requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            // Prediction #1: run input through posenet
+            // estimatePose can take in an image, video or canvas html element
+            const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+            // Prediction 2: run input through teachable machine classification model
+            const prediction = await model.predict(posenetOutput);
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                //針對這個條件式判斷警鈴是否觸發（聲音）
+                if (prediction[0].probability.toFixed(2) >= 0.5) {
+                    pauseAud();
+                    document.getElementById("result").innerHTML = "姿勢正確";
+                }
+                else {
+                    playAud()
+                    if(prediction[1].probability.toFixed(2) >= 0.5){
+                        document.getElementById("result").innerHTML = "姿勢前傾";
+                    }
+                    else if(prediction[2].probability.toFixed(2) >= 0.5){
+                        document.getElementById("result").innerHTML = "姿勢右傾";
+                    }
+                    else if(prediction[3].probability.toFixed(2) >= 0.5){
+                        document.getElementById("result").innerHTML = "姿勢左傾";
+                    }
+                    else if(prediction[4].probability.toFixed(2) >= 0.5){
+                        document.getElementById("result").innerHTML = "姿勢後仰";
+                    }
+                }
+                // finally draw the poses
+                drawPose(pose);
+            }
+            document.querySelector('.pose-description').style.display = 'none';
+            document.querySelector('button').style.display = 'none';
+        }
+        function drawPose(pose) {
+            if (webcam.canvas) {
+                ctx.drawImage(webcam.canvas, 0, 0);
+                // draw the keypoints and skeleton
+                if (pose) {
+                    const minPartConfidence = 0.5;
+                    tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+                    tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+                }
+            }
+        }
+    </script>
+    <script src="js/logo.js"></script>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="container">
+                <p class="footer-text">Dev. Chris-Chung && Jimmy-Chang </p>
+                <ul class="footer-menu">
+                    <li class="github-icon"> <a href="https://github.com/chris911024/Applications-of-Machine-Learning">
+                            <img src="images/github_white.png" alt="GitHub Logo">
+                        </a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <div class="clearfix"></div>
                 </ul>
-            </nav>
-        </header>
-            <main>
-                <div class="pose-section">
-                    <div class="pose-description"></div>
-                    <button type="button" onclick="init()">Start</button>
-                    <div><canvas id="canvas"></canvas></div>
-                    <div id="label-container"></div>
-                    <br><br><br><br>
-                    <audio id="wakeUpAudio">
-                    <source src="mp3/ambulance.mp3" type="audio/mpeg">
-                    Your browser does not support HTML5 audio.
-                    </audio>
-                    <div class="result-text"></div>
-                    <div id="result"><div>
-                </div>
-            </main>           
-                <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
-
-                <script type="text/javascript">
-
-                const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
-                let model, webcam, ctx, labelContainer, maxPredictions;
-                
-                // Audio 設定
-                var aud = document.getElementById("wakeUpAudio");
-                function playAud() { 
-                aud.play(); 
-                }
-                function pauseAud() { 
-                aud.pause(); 
-                }
-
-                async function init() {
-                    const modelURL = URL + "model.json";
-                    const metadataURL = URL + "metadata.json";
-
-                    model = await tmPose.load(modelURL, metadataURL);
-                    maxPredictions = model.getTotalClasses();
-
-                    // Convenience function to setup a webcam
-                    const size = 200;
-                    const flip = true; 
-                    webcam = new tmPose.Webcam(size, size, flip); 
-                    await webcam.setup();
-                    await webcam.play();
-                    window.requestAnimationFrame(loop);
-
-                   
-                    const canvas = document.getElementById("canvas");
-                    canvas.width = size; canvas.height = size;
-                    ctx = canvas.getContext("2d");
-                    labelContainer = document.getElementById("label-container");
-                    for (let i = 0; i < maxPredictions; i++) { // and class labels
-                        labelContainer.appendChild(document.createElement("div"));
-                    }
-                }
-
-                async function loop(timestamp) {
-                    webcam.update(); // update the webcam frame
-                    await predict();
-                    window.requestAnimationFrame(loop);
-                }
-
-                async function predict() {
-                    // Prediction #1: run input through posenet
-                    // estimatePose can take in an image, video or canvas html element
-                    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-                    // Prediction 2: run input through teachable machine classification model
-                    const prediction = await model.predict(posenetOutput);
-
-                    for (let i = 0; i < maxPredictions; i++) {
-                        const classPrediction =
-                            prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                        labelContainer.childNodes[i].innerHTML = classPrediction;
-                    
-                        //針對這個條件式判斷警鈴是否觸發（聲音）
-                    if (prediction[0].probability.toFixed(2) >= 0.5) {
-                        pauseAud();
-                        document.getElementById("result").innerHTML = "姿勢正確";
-                    }
-                    else{
-                        playAud()
-                        document.getElementById("result").innerHTML = "姿勢錯誤";
-                    } 
-                        // finally draw the poses
-                        drawPose(pose);
-                    }
-                    document.querySelector('.pose-description').style.display = 'none';
-                    document.querySelector('button').style.display = 'none';
-                }
-                function drawPose(pose) {
-                    if (webcam.canvas) {
-                        ctx.drawImage(webcam.canvas, 0, 0);
-                        // draw the keypoints and skeleton
-                        if (pose) {
-                            const minPartConfidence = 0.5;
-                            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
-                            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
-                        }
-                    }
-                }
-            </script>
-            <script src="js/logo.js"></script>
-        </main>
-        <footer>
-            <div class="footer">
-                <div class="container">
-                    <p class="footer-text">Dev. Chris-Chung && Jimmy-Chang </p>
-                    <ul class="footer-menu">
-                        <li class="github-icon"> <a href="https://github.com/chris911024/Applications-of-Machine-Learning">
-                            <img src="images/github.png" alt="GitHub Logo">
-                          </a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <div class="clearfix"></div>
-                    </ul>
-                </div>
             </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
+
 </html>
