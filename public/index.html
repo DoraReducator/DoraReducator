@@ -49,6 +49,7 @@
 
         const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
         let model, webcam, ctx, labelContainer, maxPredictions;
+       
 
         // Audio 設定ff
         var aud = document.getElementById("wakeUpAudio");
@@ -102,29 +103,29 @@
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
 
-                //針對這個條件式判斷警鈴是否觸發（聲音）
                 if (prediction[0].probability.toFixed(2) >= 0.5) {
                     pauseAud();
                     document.getElementById("result").innerHTML = "姿勢正確";
-                }
-                else {
-                    playAud()
-                    if(prediction[1].probability.toFixed(2) >= 0.5){
-                        document.getElementById("result").innerHTML = "姿勢前傾";
-                    }
-                    else if(prediction[2].probability.toFixed(2) >= 0.5){
-                        document.getElementById("result").innerHTML = "姿勢右傾";
-                    }
-                    else if(prediction[3].probability.toFixed(2) >= 0.5){
-                        document.getElementById("result").innerHTML = "姿勢左傾";
-                    }
-                    else if(prediction[4].probability.toFixed(2) >= 0.5){
-                        document.getElementById("result").innerHTML = "姿勢後仰";
-                    }
+                }   
+                if (prediction[1].probability.toFixed(2) >= 0.5) {
+                    playAud();
+                    document.getElementById("result").innerHTML = "姿勢前傾";
+                } else if (prediction[2].probability.toFixed(2) >= 0.5) {
+                    playAud();
+                    document.getElementById("result").innerHTML = "姿勢右傾";
+                } else if (prediction[3].probability.toFixed(2) >= 0.5) {
+                    playAud();
+                    document.getElementById("result").innerHTML = "姿勢左傾";
+                } else if (prediction[4].probability.toFixed(2) >= 0.5) {
+                    playAud();
+                    document.getElementById("result").innerHTML = "姿勢後仰";
+                } else {
+                    pauseAud();
                 }
                 // finally draw the poses
                 drawPose(pose);
             }
+            
             document.querySelector('.pose-description').style.display = 'none';
             document.querySelector('button').style.display = 'none';
         }
