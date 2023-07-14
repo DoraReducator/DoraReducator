@@ -39,7 +39,6 @@
   margin-right: 0;
 }
 
-
 .github-icon {
   display: flex;
   align-items: center;
@@ -47,6 +46,6 @@
 }
 
 .github-icon img {
-  width: 24px; 
-  height: 24px;
+  width: 40px; 
+  height: auto;
 }

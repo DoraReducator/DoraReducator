@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
 body {
         background-size: cover;
@@ -25,7 +26,7 @@ body {
 
 /*修改導航條*/
 header {
-    background-color: rgb(104, 105, 105);
+    background-color: #333;
     padding: 20px;
     color: #fff;
     display: flex;
@@ -98,10 +99,11 @@ nav ul li:hover a {
 }
 
 .logo img {
-    width: 100px;
+    width: 170px;
     height: auto; 
     transform: scale(0.8);
     filter: brightness(1) invert(0);
+    animation: heartbeat 1.5s infinite;
   }
   
 @keyframes heartbeat {
@@ -117,13 +119,13 @@ nav ul li:hover a {
 }
 
 .logo-text {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     color: #1c1a1a;
     text-shadow: 0 0 8px #fff, 0 0 40px #fff, 0 0 30px #fff, 0 0 60px #a89fa8;
-    animation: heartbeat 1.5s infinite;
+    /* animation: heartbeat 1.5s infinite; */
     margin-left: 50px;
-    font-family: 'Noto Serif TC', serif;
+    font-family: 微軟正黑體;
       
 }
 
@@ -177,7 +179,7 @@ main {
     transform: translate(-50%, -50%); 
     border-radius: 30px;
     border: 2px solid #555555;
-    font-family: 'Kalam', cursive;
+    font-family: 'VT323', monospace;
 }
 
 .pose-section button:hover{
