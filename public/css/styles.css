@@ -74,6 +74,8 @@ nav ul li:hover a {
 
 .logo img {
     margin-right: 50px;
+    width: 150px;
+    height: 150px;
 }
 
 @keyframes heartbeat {
@@ -89,6 +91,7 @@ nav ul li:hover a {
 }
 
 .logo-text {
+    padding: 1px 400px;
     font-size: 40px;
     font-weight: bold;
     color: #1c1a1a;
