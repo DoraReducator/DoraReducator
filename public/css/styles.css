@@ -27,7 +27,7 @@ body {
 /*修改導航條*/
 header {
     background-color: #333;
-    padding: 20px;
+    padding: 0px;
     color: #fff;
     display: flex;
     align-items: center;
@@ -40,10 +40,10 @@ li {
     border: 2px solid #f5eeee;
     border-radius: 20px;
     padding: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     position: relative;
     width: 100%; 
-    margin-right: 20px; 
+    margin-right: 50px; 
     transition: transform 0.3s;
     background-size: cover; 
     background-position: center; 
@@ -57,6 +57,7 @@ nav ul {
     list-style: none;
     display: flex;
     color: #fff;
+    margin-right: 50px; 
     font-family: 'Kalam', cursive;
 }
 
@@ -99,8 +100,9 @@ nav ul li:hover a {
 }
 
 .logo img {
-    width: 170px;
+    width: 120px;
     height: auto; 
+    margin-left: 50px;
     transform: scale(0.8);
     filter: brightness(1) invert(0);
     animation: heartbeat 1.5s infinite;
