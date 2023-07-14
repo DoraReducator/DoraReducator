@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
 .footer {
   position: fixed;
   bottom: 0;
@@ -9,15 +10,19 @@
 
 .footer-text {
   float: left;
-  font-size: 14px; 
+  font-size: 20px; 
   color: #fff; 
-  line-height: 100px;
+  line-height: 50px;
+  margin-left: 400px;
+  text-align: right; 
+  font-family: 'Kalam', cursive;
 }
 
 .footer-menu {
-  float: right;
-  line-height: 100px;
+  display: inline-flex;
+  align-items: center;
 }
+
 
 .footer-menu li a {
   font-size: 14px; 
@@ -34,15 +39,14 @@
   margin-right: 0;
 }
 
-.footer-menu {
+
+.github-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.footer-menu li {
-  margin-right: 10px;
-}
-
-.footer-menu li:last-child {
-  margin-right: 0;
+.github-icon img {
+  width: 24px; 
+  height: 24px;
 }
