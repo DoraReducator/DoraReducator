@@ -108,7 +108,7 @@
                 if (prediction[0].probability.toFixed(2) >= 0.5) {
                     pauseAud();
                     document.getElementById("result").innerHTML = "姿勢正確";
-                    
+                    document.getElementById("suggestion").innerHTML =" "
                 }
                 if (prediction[1].probability.toFixed(2) >= 0.5) {
                     playAud();

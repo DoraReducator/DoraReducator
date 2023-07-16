@@ -228,9 +228,9 @@ main {
 #suggestion{
     text-align:left;
     position:relative;
-    top:-400px;
+    top:-480px;
     left:400px;
-    font-size:25px;
+    font-size:20px;
     margin-top: 100px;
     margin-left: 50px; 
     margin-right: -700px;
@@ -239,3 +239,6 @@ main {
     text-shadow: 2px 2px 4px rgba(230, 225, 225, 0.5);
     text-shadow: 0 0 50px rgba(255, 255, 255, 0.8); */
 }
+
+
+  
