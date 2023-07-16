@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
+
 body {
-        background-size: cover;
-        background-position: center;
-        font-family: 'Kalam', cursive;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Kalam', cursive;
 }
 
 /*修改背景*/
@@ -42,14 +43,14 @@ li {
     padding: 20px;
     margin-bottom: 5px;
     position: relative;
-    width: 100%; 
-    margin-right: 50px; 
+    width: 100%;
+    margin-right: 50px;
     transition: transform 0.3s;
-    background-size: cover; 
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
 
     font-family: 'Kalam', cursive;
-    font-size: 20px; 
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -57,7 +58,7 @@ nav ul {
     list-style: none;
     display: flex;
     color: #fff;
-    margin-right: 50px; 
+    margin-right: 50px;
     font-family: 'Kalam', cursive;
 }
 
@@ -71,24 +72,26 @@ nav ul li:hover::before {
     background-color: rgba(179, 255, 0, 0.2);
     z-index: -10;
 }
+
 li:hover {
-    transform: scale(1.2); 
+    transform: scale(1.2);
     font-family: 'Kalam', cursive;
 }
+
 nav ul li a {
     margin-right: 20px;
     color: #fff;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    max-width: 100px; 
-    position: relative; 
-    z-index: 1; 
+    max-width: 100px;
+    position: relative;
+    z-index: 1;
     font-family: 'Kalam', cursive;
 }
 
 nav ul li:hover a {
-    color: #ff0000; 
+    color: #ff0000;
     font-family: 'Kalam', cursive;
 }
 
@@ -101,20 +104,22 @@ nav ul li:hover a {
 
 .logo img {
     width: 120px;
-    height: auto; 
+    height: auto;
     margin-left: 50px;
     transform: scale(0.8);
     filter: brightness(1) invert(0);
     animation: heartbeat 1.5s infinite;
-  }
-  
+}
+
 @keyframes heartbeat {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.1);
     }
+
     100% {
         transform: scale(1);
     }
@@ -128,11 +133,11 @@ nav ul li:hover a {
     /* animation: heartbeat 1.5s infinite; */
     margin-left: 50px;
     font-family: 微軟正黑體;
-      
+
 }
 
 main {
-    margin-top: 100px; 
+    margin-top: 100px;
 }
 
 .pose-section {
@@ -145,31 +150,33 @@ main {
     padding: 35px;
     margin: 0;
     max-width: 125px;
-   
+
 }
 
 .pose-section #label-container {
-    font-size: 18px; 
-    margin-left: 300px; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    font-size: 18px;
+    margin-left: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: none;
 }
 
 @keyframes bounce {
     0% {
-      transform: scale(1);
+        transform: scale(1);
     }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
 
-  .pose-section button {
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pose-section button {
     font-size: 50px;
     padding: 12px 24px;
     margin-top: 20px;
@@ -178,16 +185,17 @@ main {
     position: absolute;
     top: 50%;
     left: 45%;
-    transform: translate(-50%, -50%); 
+    transform: translate(-50%, -50%);
     border-radius: 30px;
     border: 2px solid #555555;
     font-family: 'VT323', monospace;
 }
 
-.pose-section button:hover{
+.pose-section button:hover {
     background-color: #555555;
     color: white;
 }
+
 /*
 .pose-section canvas {
     width: 200%;
@@ -204,16 +212,30 @@ main {
     margin-right: -100px;
     border-radius: 70px;
     display: block;
-  }
+}
 
-
-  #result {
-    margin-top: -30px; 
-    margin-left: 185px; 
-    margin-right:-185px ;
-    transform: scale(4.5) ;
+#result {
+    margin-top: -30px;
+    margin-left: 185px;
+    margin-right: -185px;
+    transform: scale(4.5);
     font-family: 'Noto Serif TC', serif;
     text-shadow: 2px 2px 4px rgba(230, 225, 225, 0.5);
     text-shadow: 0 0 50px rgba(255, 255, 255, 0.8);
-  }
-  
+}
+
+
+#suggestion{
+    text-align:left;
+    position:relative;
+    top:-400px;
+    left:400px;
+    font-size:25px;
+    margin-top: 100px;
+    margin-left: 50px; 
+    margin-right: -700px;
+    /* transform: scale(4.5);
+    font-family: 'Noto Serif TC', serif;
+    text-shadow: 2px 2px 4px rgba(230, 225, 225, 0.5);
+    text-shadow: 0 0 50px rgba(255, 255, 255, 0.8); */
+}
