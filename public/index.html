@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/countdown.css">
+    <!-- <link rel="stylesheet" href="css/countdown.css"> -->
     <title>影像辨識坐姿健康管理系統</title>
 </head>
+
 <body>
     <div class="back">
         <img src="images/nature.png" alt="back-images">
@@ -42,8 +43,8 @@
             <div id="result"></div>
             <div class="suggestion-text"></div>
             <div id="suggestion"></div>
-                <div>
-                </div>
+            <div>
+            </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
@@ -109,7 +110,7 @@
                 if (prediction[0].probability.toFixed(2) >= 0.5) {
                     pauseAud();
                     document.getElementById("result").innerHTML = "姿勢正確";
-                    document.getElementById("suggestion").innerHTML ="<b>1. 臀部與膝蓋的位置擺放<br></b>髖關節與膝關節的角度是保持正確坐姿的重點，膝蓋彎曲的角度最好保持90度。<br><b>2. 雙腳要平踏地面<br></b>確保您的雙腳都能夠平踏在地面上，不要以腳背外翻等姿勢支撐自己。<br><b>3. 身體坐正上半身挺直<br></b>讓上半身與坐骨保持一直線，您可以調整臀部擺放的位置，同時上半身挺直，來達成骨盆的正確受力位置。<br><b>4. 下背部與脊椎<br></b>人體的脊椎不是一直線，而是有弧度的，在正確坐姿下，下背部應該會呈現自然往前彎曲的弧度，您可以將一隻手伸向下背部，應該會有可讓手穿過去的空隙。<br><b>5. 深呼吸幫助挺直身體<br></b>橫膈膜是呼吸時的重要構造，當您吸氣時，橫膈膜會進行垂直運動來配合胸腔的擴大，也能幫助您直起身子，避免駝背。<br><b>6. 不要聳肩會痠痛<br></b>長時間地聳肩容易引起斜方肌的痠痛，因此要調整肩膀的位置，不要貼近耳朵，肩膀保持自然放鬆。"
+                    document.getElementById("suggestion").innerHTML = "<b>1. 臀部與膝蓋的位置擺放<br></b>髖關節與膝關節的角度是保持正確坐姿的重點，膝蓋彎曲的角度最好保持90度。<br><b>2. 雙腳要平踏地面<br></b>確保您的雙腳都能夠平踏在地面上，不要以腳背外翻等姿勢支撐自己。<br><b>3. 身體坐正上半身挺直<br></b>讓上半身與坐骨保持一直線，您可以調整臀部擺放的位置，同時上半身挺直，來達成骨盆的正確受力位置。<br><b>4. 下背部與脊椎<br></b>人體的脊椎不是一直線，而是有弧度的，在正確坐姿下，下背部應該會呈現自然往前彎曲的弧度，您可以將一隻手伸向下背部，應該會有可讓手穿過去的空隙。<br><b>5. 深呼吸幫助挺直身體<br></b>橫膈膜是呼吸時的重要構造，當您吸氣時，橫膈膜會進行垂直運動來配合胸腔的擴大，也能幫助您直起身子，避免駝背。<br><b>6. 不要聳肩會痠痛<br></b>長時間地聳肩容易引起斜方肌的痠痛，因此要調整肩膀的位置，不要貼近耳朵，肩膀保持自然放鬆。"
                 }
                 if (prediction[1].probability.toFixed(2) >= 0.5) {
                     playAud();
@@ -126,7 +127,7 @@
                 } else if (prediction[4].probability.toFixed(2) >= 0.5) {
                     playAud();
                     document.getElementById("result").innerHTML = "駝背";
-                    document.getElementById("suggestion").innerHTML ="<b>介紹: </b><br>駝背的錯誤坐姿，會使脊椎、特別是胸椎的彎曲角度上升，讓胸部的肌肉處在不平衡的狀況，胸椎的活動度也會因為長時間的靜止不動而下降。<br><b>缺點: </b><br>前側的胸大肌、胸小肌產生激痛點，造成如胸部、手臂的轉移痛；胸小肌緊繃會壓迫從腋下附近穿過的神經而導致手麻。而位於身體後方、背部的肌肉，會因為整個胸椎過度彎曲的姿勢被拉得更長，因此處在不好施力的位置。以駝背的坐姿使身體的重量壓在臀大肌上，造成臀大肌的第二個激痛點開始為非作歹，產生在屁股上方的疼痛。<br><b>建議: </b><br>坐姿注意骨盆位置必須擺正，引領上半身軀幹坐正，也可以訓練核心肌群，如腹式呼吸、登山者式，等加強維持力。<br>"
+                    document.getElementById("suggestion").innerHTML = "<b>介紹: </b><br>駝背的錯誤坐姿，會使脊椎、特別是胸椎的彎曲角度上升，讓胸部的肌肉處在不平衡的狀況，胸椎的活動度也會因為長時間的靜止不動而下降。<br><b>缺點: </b><br>前側的胸大肌、胸小肌產生激痛點，造成如胸部、手臂的轉移痛；胸小肌緊繃會壓迫從腋下附近穿過的神經而導致手麻。而位於身體後方、背部的肌肉，會因為整個胸椎過度彎曲的姿勢被拉得更長，因此處在不好施力的位置。以駝背的坐姿使身體的重量壓在臀大肌上，造成臀大肌的第二個激痛點開始為非作歹，產生在屁股上方的疼痛。<br><b>建議: </b><br>坐姿注意骨盆位置必須擺正，引領上半身軀幹坐正，也可以訓練核心肌群，如腹式呼吸、登山者式，等加強維持力。<br>"
                 } else {
                     pauseAud();
                 }
@@ -159,8 +160,12 @@
                     <li class="github-icon"> <a href="https://github.com/chris911024/Applications-of-Machine-Learning">
                             <img src="images/github_white.png" alt="GitHub Logo">
                         </a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="gmail-icon"> <a href="">
+                            <img src="images/gmail-icon.png" alt="Gmail Logo">
+                        </a></li>
+                    <li class="fb-icon"> <a href="">
+                            <img src="images/fb-icon.png" alt="Gmail Logo">
+                        </a></li>
                     <div class="clearfix"></div>
                 </ul>
             </div>
