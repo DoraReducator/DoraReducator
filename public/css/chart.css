@@ -1,0 +1,8 @@
+/*測試用*/
+#chart-container {
+    max-width: 600px;
+    width: 1000%;
+    height: 3000%;
+    margin-left: 1000px;
+    margin-top: -250px;
+}
