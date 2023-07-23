@@ -42,8 +42,8 @@
             <div id="result"></div>
             <div class="suggestion-text"></div>
             <div id="suggestion"></div>
-            <div>
-            </div>
+            <audio id="died">
+                <source src="mp3/died.mp3" type="audio/mpeg">
     </main>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
@@ -51,8 +51,11 @@
     <script type="text/javascript">
 
         const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
+        /*
+        物件辨識
+        const URL2 = ""
+        */
         let model, webcam, ctx, labelContainer, maxPredictions;
-
 
         // Audio 設定
         var aud = document.getElementById("wakeUpAudio");
@@ -62,15 +65,32 @@
         function pauseAud() {
             aud.pause();
         }
-
+        /*
+        Audio2 設定
+        var aud2 = document.getElementById("died");
+        function play2() {
+            aud2.play();
+        }
+        function end() {
+            aud2.pause();
+        }
+        */
         async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
-
+            /*
+            物件辨識
+            const modelURL2 = URL2 + " ";
+            const metadataURL2 = URL2 + " "
+            */
             model = await tmPose.load(modelURL, metadataURL);
             maxPredictions = model.getTotalClasses();
-
-            // Convenience function to setup a webcam
+            /*
+            物件辨識
+            model2 = await tmPose.load(modelURL2, metadataURL2);
+            maxPredictions2 = model2.getTotalClasses();
+            */
+            
             const size = 200;
             const flip = true;
             webcam = new tmPose.Webcam(size, size, flip);
@@ -83,24 +103,31 @@
             canvas.width = size; canvas.height = size;
             ctx = canvas.getContext("2d");
             labelContainer = document.getElementById("label-container");
-            for (let i = 0; i < maxPredictions; i++) { // and class labels
+            for (let i = 0; i < maxPredictions; i++) { 
                 labelContainer.appendChild(document.createElement("div"));
             }
         }
 
         async function loop(timestamp) {
-            webcam.update(); // update the webcam frame
+            webcam.update(); 
             await predict();
             window.requestAnimationFrame(loop);
         }
 
         async function predict() {
-            // Prediction #1: run input through posenet
-            // estimatePose can take in an image, video or canvas html element
             const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
-            // Prediction 2: run input through teachable machine classification model
             const prediction = await model.predict(posenetOutput);
-
+            /*
+            物件辨識
+            const objectDetectionPrediction = await model2.predict(webcam.canvas);
+            */
+            /*
+            if (prediction2[0].className !== "prediction[0]" || prediction2[0].className !== "prediction[1]") {
+                play2();
+            } else {
+                end();
+            }
+            */
             for (let i = 0; i < maxPredictions; i++) {
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
@@ -130,7 +157,6 @@
                 } else {
                     pauseAud();
                 }
-                // finally draw the poses
                 drawPose(pose);
             }
 
@@ -140,7 +166,6 @@
         function drawPose(pose) {
             if (webcam.canvas) {
                 ctx.drawImage(webcam.canvas, 0, 0);
-                // draw the keypoints and skeleton
                 if (pose) {
                     const minPartConfidence = 0.5;
                     tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
