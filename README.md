@@ -1,5 +1,5 @@
 # Applications-of-Machine-Learning
-2023全國創意競賽
+2023全國創意競賽(待更新)
 https://dora-reducator.web.app 
 
 ## 前言
