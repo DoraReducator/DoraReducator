@@ -22,8 +22,8 @@
             <ul>
                 <li><a href="https://heho.com.tw">Heho</a></li>
                 <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">HPA</a></li>
-                <li><a href="https://health.gov.taipei/cp.aspx?n=9E01A3029776FF4C">Issue</a></li>
                 <li><a href="countdown.html" target="_blank">倒數計時器</a></li>
+                <li><a href="side_cam.html" >側身矯正</a></li>
             </ul>
         </nav>
     </header>
@@ -42,8 +42,12 @@
             <div id="result"></div>
             <div class="suggestion-text"></div>
             <div id="suggestion"></div>
-            <button id="button_chart" style="display: none">CHART</button>
-            <canvas id="doughnutChart" width="400" height="400"></canvas>
+            <tr >
+            <div class="chart">
+                <button id="button_chart" style="display: none">CHART</button>
+                <canvas id="PieChart" width="400" height="400"></canvas>
+            </div>
+        </tr>
             <audio id="died">
                 <source src="mp3/died.mp3" type="audio/mpeg">
     </main>
@@ -54,19 +58,19 @@
 
     <script type="text/javascript">
 
-        const URL = "https://teachablemachine.withgoogle.com/models/eqdtQNmC6/";
+        const URL = "https://teachablemachine.withgoogle.com/models/z0vR-GgVw/";
 
         let right = 1, lean_forward = 1, too_upright = 1, tilt = 1, camel = 1;
         var prediction_copy = [right, lean_forward, too_upright, tilt, camel];
 
-        function createDoughnutChart(prediction_copy) {
-            var ctx = document.getElementById('doughnutChart').getContext('2d');
+        function createPieChart(prediction_copy) {
+            var ctx = document.getElementById('PieChart').getContext('2d');
 
-            if (window.myDoughnutChart) {
+            if (window.myPieChart) {
                 // If a chart already exists, destroy it to create a new one with updated data
-                window.myDoughnutChart.destroy();
+                window.myPieChart.destroy();
             }
-            window.myDoughnutChart = new Chart(ctx, {
+            window.myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
                     labels: ['姿勢正確', '頭部前傾', '腰桿過挺', '頭部傾斜', '駝背'], // Replace with your own labels
@@ -78,7 +82,20 @@
                     ],
                 },
                 options: {
-                    // Add any additional options you want for the doughnut chart
+                    // Add any additional options you want for the pie chart
+                    responsive: true, // The chart will resize automatically to fit its container
+                    maintainAspectRatio: false, // Allow the chart to have different aspect ratios
+
+                    // Set the chart width and height (you can customize these values)
+                    // If you want the chart to take the full width of the container, set width: "100%".
+                    // If you want a specific width, set it in pixels, e.g., width: 500.
+                    // For height, you can set it in pixels as well.
+                    // Note: The chart.js library will scale the chart to fit the specified dimensions.
+                    // If the container is smaller than the specified width/height, the chart will be scaled down.
+                    // If the container is larger, the chart will be scaled up.
+                    // Adjust these values as per your layout requirements.
+                    width: 8000,
+                    height: 8000,
                 },
             });
         }
@@ -86,9 +103,8 @@
         // Event listener for the button click
         document.getElementById('button_chart').addEventListener('click', function () {
             prediction_copy = [right, lean_forward, too_upright, tilt, camel];
-            createDoughnutChart(prediction_copy);
+            createPieChart(prediction_copy);
         });
-
 
         /*
         物件辨識
