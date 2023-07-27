@@ -32,4 +32,82 @@ body {
     font-size: 50px;
     text-align: center;
   }
+
+  @import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    height: 100px;
+  }
+  .footer-text {
+    float: left;
+    font-size: 20px; 
+    color: #fff; 
+    line-height: 50px;
+    margin-left: 400px;
+    text-align: right; 
+    font-family: 'Kalam', cursive;
+  }
+  /* 1 */
   
+  .footer-menu {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  
+  .footer-menu li a {
+    font-size: 14px; 
+    color: #fff; 
+    cursor: pointer;
+  }
+  
+  .footer-menu li {
+    display: inline-block;
+    margin-right: 10px;
+    border: none;
+  }
+  
+  .footer-menu li:last-child {
+    margin-right: 0;
+  }
+  
+  .github-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .github-icon img {
+    width: 70px; 
+    height: auto;
+    margin-top: -20px;
+  }
+  
+  .gmail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .gmail-icon img {
+    width: 70px; 
+    height: auto;
+    margin-top: -20px;
+  }
+  
+  .fb-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fb-icon img {
+    width: 50px; 
+    height: auto;
+    margin-top: -20px;
+  }
