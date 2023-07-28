@@ -7,9 +7,10 @@ body {
     background-position: center;
     font-family: 'Kalam', cursive;
     padding-bottom: 120px;
+    overflow: hidden;
+    z-index: 9999;
 }
 
-/*修改背景*/
 .back {
     position: fixed;
     top: 0;
@@ -36,6 +37,7 @@ header {
     justify-content: space-between;
     border-radius: 100px;
     font-family: 'Kalam', cursive;
+    z-index: 9999;
 }
 
 li {
@@ -53,6 +55,7 @@ li {
     font-family: 'Kalam', cursive;
     font-size: 16px;
     font-weight: bold;
+    z-index: 9999;
 }
 
 nav ul {
@@ -61,6 +64,7 @@ nav ul {
     color: #fff;
     margin-right: 30px;
     font-family: 'Kalam', cursive;
+    z-index: 9999;
 }
 
 nav ul li:hover::before {
@@ -71,12 +75,13 @@ nav ul li:hover::before {
     width: 100%;
     height: 3px;
     background-color: rgba(179, 255, 0, 0.2);
-    z-index: -10;
+    z-index: 999999;
 }
 
 li:hover {
     transform: scale(1.2);
     font-family: 'Kalam', cursive;
+    z-index: 9999;
 }
 
 nav ul li a {
@@ -89,6 +94,7 @@ nav ul li a {
     position: relative;
     z-index: 1;
     font-family: 'Kalam', cursive;
+    z-index: 9999;
 }
 
 nav ul li:hover a {
@@ -101,6 +107,7 @@ nav ul li:hover a {
     align-items: center;
     padding: 20px;
     font-family: 'Kalam';
+    z-index: 9999;
 }
 
 .logo img {
@@ -130,10 +137,11 @@ nav ul li:hover a {
     font-size: 50px;
     font-weight: bold;
     color: #1c1a1a;
-    text-shadow: 0 0 8px #fff, 0 0 40px #fff, 0 0 30px #fff, 0 0 60px #a89fa8;
+    text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #a89fa8;
     /* animation: heartbeat 1.5s infinite; */
     margin-left: 50px;
     font-family: 微軟正黑體;
+    z-index: 9999;
 
 }
 
@@ -226,22 +234,23 @@ main {
 }
 
 
-#suggestion{
-    text-align:left;
-    position:relative;
-    top:-480px;
-    left:400px;
-    font-size:20px;
+#suggestion {
+    text-align: left;
+    position: relative;
+    top: -480px;
+    left: 500px;
+    font-size: 18px;
     margin-top: 100px;
-    margin-left: 50px; 
+    margin-left: -350px; 
     margin-right: -700px;
-    /* transform: scale(4.5);
-    font-family: 'Noto Serif TC', serif;
-    text-shadow: 2px 2px 4px rgba(230, 225, 225, 0.5);
-    text-shadow: 0 0 50px rgba(255, 255, 255, 0.8); */
+    box-shadow: 0 0 0 40px rgba(249, 246, 246, 0.3);
+    background-color: rgba(249, 246, 246, 0.3); /* 使用 RGBA 表示法，設定透明度為 0.7 */
+    width: 450px;
+    border-radius: 20px;
+    z-index: -1;
 }
+
 
 #countdown {
     display: none;
 }
-
