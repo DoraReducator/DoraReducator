@@ -6,7 +6,6 @@ header {
     z-index: 9999;
   }
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -52,7 +51,6 @@ body {
     text-align: right; 
     font-family: 'Kalam', cursive;
   }
-  /* 1 */
   
   .footer-menu {
     display: inline-flex;

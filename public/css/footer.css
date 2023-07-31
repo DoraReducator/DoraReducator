@@ -9,7 +9,11 @@ footer {
   width: 100%;
   position: fixed;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 
 .footer-text {
   float: left;
@@ -17,16 +21,15 @@ footer {
   color: #fff; 
   line-height: 50px;
   margin-left: 400px;
-  text-align: right; 
+  text-align: right;  
   font-family: 'Kalam', cursive;
+  flex-grow: 1;
 }
-/* 1 */
 
 .footer-menu {
   display: inline-flex;
   align-items: center;
 }
-
 
 .footer-menu li a {
   font-size: 14px; 
@@ -51,9 +54,9 @@ footer {
 }
 
 .github-icon img {
-  width: 70px; 
+  width: 40px; 
   height: auto;
-  margin-top: -20px;
+  margin-top: 5px;
 }
 
 .gmail-icon {
@@ -63,9 +66,9 @@ footer {
 }
 
 .gmail-icon img {
-  width: 70px; 
+  width: 40px; 
   height: auto;
-  margin-top: -20px;
+  margin-top: 5px;
 }
 
 .fb-icon {
@@ -75,7 +78,7 @@ footer {
 }
 
 .fb-icon img {
-  width: 50px; 
+  width: 30px; 
   height: auto;
-  margin-top: -20px;
+  margin-top: 5px;
 }

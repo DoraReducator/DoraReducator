@@ -27,10 +27,9 @@ body {
     opacity: 0.5;
 }
 
-/*修改導航條*/
 header {
     background-color: #333;
-    padding: 0px;
+    padding: -100px ;
     color: #fff;
     display: flex;
     align-items: center;
@@ -138,7 +137,6 @@ nav ul li:hover a {
     font-weight: bold;
     color: #1c1a1a;
     text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #a89fa8;
-    /* animation: heartbeat 1.5s infinite; */
     margin-left: 50px;
     font-family: 微軟正黑體;
     z-index: 9999;
@@ -205,14 +203,6 @@ main {
     color: white;
 }
 
-/*
-.pose-section canvas {
-    width: 200%;
-    height: auto;
-    margin-right: 130px;
-    border-radius: 70px;
-  }
-*/
 .pose-section canvas {
     width: 250%;
     height: 100%;
@@ -244,7 +234,7 @@ main {
     margin-left: -350px; 
     margin-right: -700px;
     box-shadow: 0 0 0 40px rgba(249, 246, 246, 0.3);
-    background-color: rgba(249, 246, 246, 0.3); /* 使用 RGBA 表示法，設定透明度為 0.7 */
+    background-color: rgba(249, 246, 246, 0.3); 
     width: 450px;
     border-radius: 20px;
     z-index: -1;
