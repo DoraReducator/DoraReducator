@@ -81,9 +81,9 @@ body {
   }
   
   .github-icon img {
-    width: 70px; 
+    width: 40px; 
     height: auto;
-    margin-top: -20px;
+    margin-top: 5px;
   }
   
   .gmail-icon {
@@ -93,9 +93,9 @@ body {
   }
   
   .gmail-icon img {
-    width: 70px; 
+    width: 40px; 
     height: auto;
-    margin-top: -20px;
+    margin-top: 5px;
   }
   
   .fb-icon {
@@ -105,7 +105,7 @@ body {
   }
   
   .fb-icon img {
-    width: 50px; 
+    width: 30px; 
     height: auto;
-    margin-top: -20px;
+    margin-top: 5px;
   }
