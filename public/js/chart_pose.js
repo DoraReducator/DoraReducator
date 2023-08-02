@@ -176,7 +176,6 @@ const URL = "https://teachablemachine.withgoogle.com/models/z0vR-GgVw/";
                         "<b>介紹:</b><br>正常胸椎該有的微彎曲角度消失，腰桿過度前凸，髂腰肌緊繃。是坐姿過度矯正常見的錯誤觀念。<br>" +
                         "<b>缺點:</b><br>變成過度挺腰可能導致，腹肌、臀部的肌肉不容易被使用到，反而會過度使用大腿的肌肉，這便是導致下半身肥胖以及臀部下垂的原因。對於在意身體曲線的女性來說是很大的困擾。另外，若放任過度挺腰不處理的話，上半身的體重將由腰部、髖關節承受，導致腰痛以及椎間盤突出的可能性提高。<br>" +
                         "<b>建議:</b><br>坐著時使用靠墊，時常意識背部要靠在靠墊上，幫助骨盆回到理想的角度，除此之外也可以改善睡姿，改成不容易造成背部負擔的側躺姿勢，並適時地的翻身。<br>";
-
                 } else if (prediction[3].probability.toFixed(2) >= 0.5) {
                     playAud();
                     tilt++;
@@ -193,13 +192,11 @@ const URL = "https://teachablemachine.withgoogle.com/models/z0vR-GgVw/";
                         "<b>介紹:</b><br>駝背的錯誤坐姿，會使脊椎、特別是胸椎的彎曲角度上升，讓胸部的肌肉處在不平衡的狀況，胸椎的活動度也會因為長時間的靜止不動而下降。<br>" +
                         "<b>缺點:</b><br>前側的胸大肌、胸小肌產生激痛點，造成如胸部、手臂的轉移痛；胸小肌緊繃會壓迫從腋下附近穿過的神經而導致手麻。而位於身體後方、背部的肌肉，會因為整個胸椎過度彎曲的姿勢被拉得更長，因此處在不好施力的位置。以駝背的坐姿使身體的重量壓在臀大肌上，產生在屁股上方的疼痛。<br>" +
                         "<b>建議:</b><br>坐姿注意骨盆位置必須擺正，引領上半身軀幹坐正，也可以訓練核心肌群，如腹式呼吸、登山者式，等加強維持力。<br>";
-
                 } else {
                     pauseAud();
                 }
                 drawPose(pose);
             }
-
             document.querySelector('.pose-description').style.display = 'none';
             document.querySelector('button').style.display = 'none';
             document.getElementById("button_chart").style.display = 'block';
