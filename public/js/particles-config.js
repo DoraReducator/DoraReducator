@@ -1,4 +1,3 @@
-// particles-config.js
 particlesJS("particles-container", {
     particles: {
       number: {
@@ -9,7 +8,7 @@ particlesJS("particles-container", {
         },
       },
       color: {
-        value: "#ff0000", // 將粒子顏色設置為紅色
+        value: "#ff0000", 
       },
       shape: {
         type: "circle",
