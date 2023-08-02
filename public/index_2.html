@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +13,10 @@
 </head>
 
 <body>
-    <div class="back">
-        <img src="images/background1.jpg" alt="back-images">
-    </div>
+    <div id="particles-container"></div>
     <header>
         <div class="logo">
-            <a href="index.html"><img src="images/Dora_Reducator_logo.png" alt="Logo"></a>
+            <img href="index.html" src="images/Dora_Reducator_logo.png" alt="Logo">
             <a class="logo-text">坐姿健康管理系統</a>
         </div>
         <nav>
@@ -36,7 +35,7 @@
             <div><canvas id="canvas"></canvas></div>
             <div id="label-container"></div>
             <br><br><br><br>
-            <audio id="wakeUpAudio"><source src="mp3/ambulance.mp3" type="audio/mpeg"></audio>
+            <audio id="wakeUpAudio"><source src="mp3/BBsound.mp3" type="audio/mpeg"></audio>
             <div class="result-text"></div>
             <div id="result"></div>
             <div class="suggestion-text"></div>
@@ -45,7 +44,7 @@
         <div class="chart-wrapper">
             <div class="chart" style="display: none;">
                 <button id="button_chart" style="display: none">CHART</button>
-                <canvas id="PieChart" width="400" height="400"></canvas>
+                <canvas id="PieChart" width="600" height="600"></canvas>
             </div>
         </div>
     </main>
@@ -75,7 +74,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script type="text/javascript" src="js/chart_pose_2.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/particles-config.js"></script>
 </body>
 
 </html>

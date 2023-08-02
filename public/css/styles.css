@@ -1,60 +1,44 @@
 @import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap');
-@media screen {
-    
-}
+
 body {
     background-size: cover;
     background-position: center;
     font-family: 'Kalam', cursive;
     padding-bottom: 120px;
-    overflow: hidden;
     z-index: 9999;
-}
-
-.back {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.back img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
+    background-color: #2c2b2b;
+    overflow: hidden; 
 }
 
 header {
     background-color: #333;
-    padding: -100px ;
+    padding: 6px 30px; 
+    border-radius: 1px;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 100px;
     font-family: 'Kalam', cursive;
-    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
+
 
 li {
     border: none;
     border-radius: 20px;
-    padding: 10px;
-    margin-bottom: 5px;
     position: relative;
     width: 100%;
     margin-right: 50px;
     transition: transform 0.3s;
     background-size: cover;
     background-position: center;
-
     font-family: 'Kalam', cursive;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     z-index: 9999;
 }
@@ -69,7 +53,7 @@ nav ul {
 }
 
 nav ul li:hover::before {
-    content: '';
+   
     position: absolute;
     bottom: 0;
     left: 0;
@@ -102,17 +86,16 @@ nav ul li:hover a {
     color: #ff0000;
     font-family: 'Kalam', cursive;
 }
-
 .logo {
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
     font-family: 'Kalam';
     z-index: 9999;
 }
 
 .logo img {
-    width: 120px;
+    width: 100px;
     height: auto;
     margin-left: 50px;
     transform: scale(0.8);
@@ -135,7 +118,7 @@ nav ul li:hover a {
 }
 
 .logo-text {
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bold;
     color: #1c1a1a;
     text-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #a89fa8;
@@ -208,17 +191,17 @@ main {
 .pose-section canvas {
     width: 250%;
     height: 100%;
-    margin-top: -100px;
-    margin-left: 100px;
-    margin-right: -100px;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: -50px;
     border-radius: 70px;
     display: block;
 }
 
 #result {
-    margin-top: -30px;
-    margin-left: 185px;
-    margin-right: -185px;
+    margin-top: -50px;
+    margin-left: 145px;
+    margin-right: -145px;
     transform: scale(4.5);
     font-family: 'Noto Serif TC', serif;
     text-shadow: 2px 2px 4px rgba(230, 225, 225, 0.5);
@@ -229,11 +212,11 @@ main {
 #suggestion {
     text-align: left;
     position: relative;
-    top: -480px;
+    top: -500px;
     left: 500px;
     font-size: 18px;
     margin-top: 100px;
-    margin-left: -350px; 
+    margin-left: -450px; 
     margin-right: -700px;
     box-shadow: 0 0 0 40px rgba(249, 246, 246, 0.3);
     background-color: rgba(249, 246, 246, 0.3); 
@@ -246,3 +229,12 @@ main {
 #countdown {
     display: none;
 }
+
+#particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
