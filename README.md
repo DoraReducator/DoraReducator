@@ -8,6 +8,9 @@ https://dora-reducator.web.app
 ## 系統架構
 <img width="464" alt="image" src="https://github.com/chris911024/Applications-of-Machine-Learning/assets/67829896/e623d35e-b1af-4e21-b4a0-10795dd29b53">
 
+## UI/UX
+<img width="375" alt="image" src="https://github.com/chris911024/Applications-of-Machine-Learning/assets/67829896/038fc11c-2518-4102-958b-cc652cc7c779"><img width="376" alt="image" src="https://github.com/chris911024/Applications-of-Machine-Learning/assets/67829896/31d8e3c0-dde9-4c6c-8cba-798342779ee0">
+
 ## 目的
 減少1%近視率，並且給予其危害後果，達到嚇阻效果。
 ## 健康建議
