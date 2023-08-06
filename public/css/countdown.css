@@ -1,111 +1,112 @@
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 36px;
-  }
-  
-  .button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  #timer-display {
-    font-size: 50px;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
 
-  @import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
+h1 {
+  text-align: center;
+  font-size: 36px;
+}
 
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    height: 100px;
-  }
-  .footer-text {
-    float: left;
-    font-size: 20px; 
-    color: #fff; 
-    line-height: 50px;
-    margin-left: 400px;
-    text-align: right; 
-    font-family: 'Kalam', cursive;
-  }
-  
-  .footer-menu {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  
-  .footer-menu li a {
-    font-size: 14px; 
-    color: #fff; 
-    cursor: pointer;
-  }
-  
-  .footer-menu li {
-    display: inline-block;
-    margin-right: 10px;
-    border: none;
-  }
-  
-  .footer-menu li:last-child {
-    margin-right: 0;
-  }
-  
-  .github-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .github-icon img {
-    width: 40px; 
-    height: auto;
-    margin-top: 5px;
-  }
-  
-  .gmail-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .gmail-icon img {
-    width: 40px; 
-    height: auto;
-    margin-top: 5px;
-  }
-  
-  .fb-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .fb-icon img {
-    width: 30px; 
-    height: auto;
-    margin-top: 5px;
-  }
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#timer-display {
+  font-size: 50px;
+  text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css2? family=Kalam:wght@300&display=swap');
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  height: 100px;
+}
+
+.footer-text {
+  float: left;
+  font-size: 20px;
+  color: #fff;
+  line-height: 50px;
+  margin-left: 400px;
+  text-align: right;
+  font-family: 'Kalam', cursive;
+}
+
+.footer-menu {
+  display: inline-flex;
+  align-items: center;
+}
+
+
+.footer-menu li a {
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer-menu li {
+  display: inline-block;
+  margin-right: 10px;
+  border: none;
+}
+
+.footer-menu li:last-child {
+  margin-right: 0;
+}
+
+.github-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-icon img {
+  width: 40px;
+  height: auto;
+  margin-top: 5px;
+}
+
+.gmail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gmail-icon img {
+  width: 40px;
+  height: auto;
+  margin-top: 5px;
+}
+
+.fb-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fb-icon img {
+  width: 30px;
+  height: auto;
+  margin-top: 5px;
+}
