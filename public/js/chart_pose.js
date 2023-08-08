@@ -125,6 +125,7 @@ const URL = "https://teachablemachine.withgoogle.com/models/z0vR-GgVw/";
             }
         }
 
+
         async function loop(timestamp) {
             webcam.update();
             await predict();
