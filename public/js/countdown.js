@@ -1,3 +1,4 @@
+/*
 window.onload = function () {
   var countdownBtn = document.getElementById('countdown-btn');
   var timerDisplay = document.getElementById('timer-display');
@@ -59,3 +60,30 @@ window.onload = function () {
     );
   }
 };
+*/
+function Countdown() {
+  var countdownTime = 1 * 60; 
+  var countdownInterval = setInterval(function () {
+      countdownTime--;
+
+      if (countdownTime <= 0) {
+          clearInterval(countdownInterval);
+          playAud_countdown();
+          alert("倒數結束！");
+      }
+  }, 1000);
+
+  var aud_countdown = new Audio("mp3/CountDownMusic.mp3"); 
+  function playAud_countdown() {
+      aud_countdown.play();
+  }
+}
+
+
+
+
+
+
+
+
+
