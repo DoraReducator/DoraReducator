@@ -82,3 +82,9 @@ footer {
   height: auto;
   margin-top: 5px;
 }
+
+@media (min-width: 1400px){
+  .footer-text{
+    margin-left: 700px;
+  }
+}

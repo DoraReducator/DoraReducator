@@ -216,7 +216,7 @@ main {
     left: 500px;
     font-size: 18px;
     margin-top: 100px;
-    margin-left: -450px; 
+    margin-left: -500px; 
     margin-right: -700px;
     box-shadow: 0 0 0 40px rgba(249, 246, 246, 0.3);
     background-color: rgba(249, 246, 246, 0.3); 
@@ -238,3 +238,23 @@ main {
     height: 100%;
     z-index: -1;
   }
+
+@media (min-width: 1400px) {
+    .pose-section canvas{
+        width: 400%;
+        height: 150%;
+    }
+    #result{
+    font-size: 25px;
+    margin-left: -50px; 
+    margin-right: -520px;
+    }
+    #suggestion{
+    font-size: 25px;
+    margin-top: -50px;        
+    margin-left: 350px; 
+    margin-right: -400px;
+    width: 600px;
+    }
+
+}
