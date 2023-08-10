@@ -29,11 +29,16 @@
   height: 100px;
 }
 
-@media (min-width: 1400px){
+@media (min-width: 1500px) and (max-width: 2300px){
   .chart{
     width: 500px;
   }
   .button_chart{
     width: 100px;
+  }
+}
+@media (max-width: 801px){
+  .chart{
+    width: 200px;
   }
 }
