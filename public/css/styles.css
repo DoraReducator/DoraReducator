@@ -238,3 +238,70 @@ main {
     height: 100%;
     z-index: -1;
   }
+
+@media(min-width: 1500px) and (max-width: 2300px){
+    .pose-section canvas{
+        width: 400%;
+        height: 150%;
+    }
+    #result{
+        font-size: 25px;
+        margin-left: -50px; 
+        margin-right: -520px;
+    }
+    #suggestion{
+        font-size: 25px;
+        margin-top: -50px;        
+        margin-left: 350px; 
+        margin-right: -400px;
+        width: 600px;
+    }
+
+}
+
+@media (max-width: 801px){
+    .header{
+        width: auto;
+    }
+    li{
+        width: auto;
+        font-size: 10px;
+     
+    }
+    nav ul{
+        width:auto;
+        margin-right: 5px;
+    }
+    nav ul li a{
+        margin-right: 1px;
+    }
+    .logo-text{
+        font-size: 20px;
+    }
+    .logo img{
+        margin-left: 10px;
+    }
+    .pose-section button {
+        font-size: 20px;
+        border-radius: 20px;
+    }
+    .pose-section canvas{
+        width: 150%;
+        height: 50%;
+        margin-top: 50px;
+        margin-left: 5px;
+        margin-right: 100px;
+    }
+    #result{
+        font-size: 10px;
+        margin-left: -100px; 
+        margin-right: -180px;
+    }
+    #suggestion{
+        font-size: 10px;
+        margin-top: 250px;        
+        margin-left: -100px; 
+        margin-right: 300px;
+        width: 200px;
+    }
+}

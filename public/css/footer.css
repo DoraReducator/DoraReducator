@@ -82,3 +82,25 @@ footer {
   height: auto;
   margin-top: 5px;
 }
+
+@media (min-width: 1500px) and (max-width: 2300px){
+  .footer-text{
+    margin-left: 700px;
+  }
+}
+
+@media (max-width: 801px){
+  .footer-text {
+    font-size: 13px;
+    margin-left: 250px;
+  }
+  .github-icon img{
+    width: 30px;
+  }
+  .gmail-icon img {
+    width: 30px;
+  }
+  .fb-icon img{
+    width: 25px;
+  }
+}
