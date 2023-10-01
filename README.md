@@ -5,7 +5,14 @@ https://dora-reducator.web.app
 由於現今全台近視率越來越高，是一個趨勢，目前台灣每５人就有4人近視，為了解決問題，我們將近視普及的原因設置在坐姿方面，科技業的興起，也造就不少學生、上班族對於坐在電腦桌前面的時間越藍越久，成為近視的推手之一，為了解決這個問題，將訓練一個模型針對“影線辨識坐姿健康管理系統”去改善這個問題。
 
 ## 技術
+### 深度學習
 tensorflow:
+### 機器學習
+scikit-learn:
+### 模型選擇:
+卷積神經網路 (Convolutional Neural Network, CNN) : 善於從圖像中找到有價值的資訊，廣泛應用在圖像處理的任務中。
+### 加速運算
+透過colab 進行模型建制加速運算，由於現場機器並沒有顯示卡，因此使用這項免費雲端資源去達成cuda加速運算的缺失
 ## 系統架構
 <img width="464" alt="image" src="https://github.com/chris911024/Applications-of-Machine-Learning/assets/67829896/e623d35e-b1af-4e21-b4a0-10795dd29b53">
 
