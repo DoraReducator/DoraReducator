@@ -1,4 +1,10 @@
 # Applications-of-Machine-Learning
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/chris911024/Applications-of-Machine-Learning?style=flat&label=Stars)](https://github.com/chris911024/Applications-of-Machine-Learning/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/chris911024/Applications-of-Machine-Learning?style=flat&label=Forks)](https://github.com/chris911024/Applications-of-Machine-Learning/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/chris911024/Applications-of-Machine-Learning?style=flat&label=Issues)](https://github.com/chris911024/Applications-of-Machine-Learning/issues)
+
 https://dora-reducator.web.app 
 
 ## 前言
